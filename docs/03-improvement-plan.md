@@ -1,55 +1,47 @@
-# Improvement plan — 2003 350Z (VQ35DE)
+# Improvement plan — reliable power, DIY tune (manual, 243,000 km)
 
-Stock specs: about 287 hp / 274 lb-ft at the crank for the manual (less for the AT), roughly 240–250 whp on a dyno, 6,600 rpm redline.
+Goal: **good, reliable power** with a tune we build ourselves from our own logs.
 
-## Stage 0 — Health baseline (do this first, before any power mods)
-More power only makes existing problems worse. Check these, and log the results in this repo:
+Rough stock numbers: ~206 kW at the crank (ADM manual), roughly **175–185 rwkW** (≈240–250 whp) on a dyno. Your existing exhaust probably adds a little.
 
-- [ ] **Scan all modules for DTCs** (ECM, TCM, ABS, BCM)
-- [ ] **Oil consumption**: early VQ35DEs (2003–05) are known to burn oil. Track it over ~1,000 mi. More than about 1 qt per 1,000 mi is a red flag for adding boost.
-- [ ] **Compression / leak-down test**
-- [ ] **Crank & cam position sensors**: there was a 2003 recall over poorly soldered sensor boards. Confirm it was done (a Nissan dealer can check by VIN).
-- [ ] **Timing chain**: listen for a whine or rattle (secondary chain guides and tensioners). This is an interference engine, so a chain failure wrecks the valves.
-- [ ] Valve cover / plenum gaskets, steering rack leaks
-- [ ] MT: grinding into 3rd (synchros), clutch slave cylinder. AT: cooler lines.
-- [ ] Spark plugs (100k mi interval), coil packs, MAF cleaning, fresh fluids
+## Stage 0 — Health baseline (non-negotiable at 243k km)
+A tune exposes weaknesses. A tired engine on a good tune is still a tired engine. Log every result in `data/health/`.
 
-## Stage 1 — "Make the stock car better" (biggest return per dollar)
-These often matter more than horsepower:
-- **Tires** — the single biggest improvement to grip, braking and feel.
-- **Brake fluid + performance pads**
-- **Alignment** (a mild performance alignment)
-- **Oil cooler** if you plan to track it. VQ35DE oil temperatures get high on track. **Our logger can measure this before you spend money.**
-
-## Stage 2 — Naturally aspirated power + tune (~+20–35 whp, realistic)
-| Mod | Notes |
+| Check | Why it matters for tuning |
 |---|---|
-| **UpRev tune** | This is the core. It lets you edit fuel targets, MAF scaling, ignition timing, knock thresholds, cam phasing (VTC), throttle mapping, **rev limit** (a modest raise from 6,600), and the **speed limiter**. It also cleans up drivability. |
-| Cat-back exhaust | Mostly sound, but worth a few whp once tuned |
-| Intake | A few whp at most. Forum dyno results are inconsistent. |
-| Y-pipe + high-flow cats | A real gain on the VQ. **Use emissions-legal (CARB EO) cats if your state inspects.** Test pipes are illegal on the road in the US. |
-| Headers | DE owners have reached ~253 whp with headers + intake + exhaust + UpRev tune, and ~269 whp after a larger intake and throttle body were added and the car was retuned |
+| **Compression + leak-down test** | Decides whether forced induction is ever on the table |
+| **Oil consumption** over 1,500 km | Early VQ35DEs burn oil. More than ~1 L per 1,500 km means fix it before adding power. |
+| **Smoke test for vacuum/intake leaks** | This is a MAF car: any unmetered air makes the fuel tuning lie |
+| **Injector flow test + clean** (or a matched set) | At 243k km, uneven injectors = one lean cylinder you can't see on a single wideband |
+| **Fuel pressure + pump + filter** | Lean at the top end is how VQs melt pistons |
+| **Narrowband O2 sensors, MAF, coil packs, plugs** | Old O2 sensors corrupt fuel trims, and the trims are our main data |
+| **Timing chain guides/tensioners** (listen for whine/rattle) | Interference engine |
+| **Crank/cam sensors**, PCV, plenum gaskets, thermostat | Known Z33 items |
+| Clutch, engine/gearbox mounts | Extra torque finds weak mounts and slipping clutches |
 
-Realistic NA ceiling for a 2003 DE on bolt-ons + tune: **~260–275 whp**.
+**Our first software deliverable helps here directly:** logging fuel trims (LTFT/STFT) per bank at idle, cruise and load shows vacuum leaks, injector or O2 problems before we touch the tune.
 
-## Stage 3 — Forced induction (~350–420 whp)
-- Options: Vortech V-3 supercharger (~412 hp / 7.5–8.5 psi on a 2003 per the vendor), Stillen (Vortech-based), or single/twin turbo kits.
-- **Stock internals are generally considered safe to about 400 whp.** People run more, but how long the engine lasts becomes a gamble.
-- Requires: larger injectors, a fuel pump, a wideband, a proper tune (UpRev), and ideally a healthy-oil-consumption engine (see Stage 0). Budget $6–10k all-in.
+## Stage 1 — Naturally aspirated + DIY tune (target ~195–205 rwkW / ~265–275 whp)
+Order of work:
+1. **Learn the stock tune from logs first.** Map where the ECU runs closed loop vs open loop, how far knock retard pulls timing, and what the AFR does at WOT. The stock DE runs very rich at WOT, so there is safe power in fuel and timing.
+2. Mechanical: confirm what the exhaust is (cat-back only, or Y-pipe/cats too?). If you're not worried about rules, a **Y-pipe + high-flow cats** is the best NA mechanical gain on a VQ. Headers come next. An intake adds a little.
+3. Tune, in small logged steps:
+   - **WOT fuel targets**: lean the rich stock WOT mixture toward a safe ~12.5–12.8:1 AFR
+   - **Ignition timing**: add advance gradually on 98 RON, watching knock retard. Back off at the first sign of knock.
+   - **MAF scaling**: required after any intake or MAF-housing change
+   - **VTC (intake cam timing)**: real midrange gains, best tested on a dyno
+   - **Rev limit**: modest only (~6,900–7,000) on a 243k km DE with stock valve springs
+   - Throttle map, speed limiter, cooling fan temperatures
+4. **Dyno sessions** for the WOT work. Cruise/part-throttle tuning can be done from road logs.
 
-## Where our software helps
-1. **Baseline logger**: record RPM, load, MAF V, timing, knock retard, coolant/oil temperatures, IPW and AFR on the stock car.
-2. **Health monitor**: track oil and coolant temperatures on drives or the track, and alert on knock events or fuel trims drifting.
-3. **Before/after comparison**: use the same road, the same gear and a pull-logging app to measure what each mod actually did (a poor man's dyno from acceleration + vehicle mass).
-4. **Tune-review tooling**: overlay wideband AFR against target and knock against timing, which shows a tuner where to look.
+## Stage 2 — Forced induction (only if Stage 0 is clean): ~250–280 rwkW
+- A low-boost (~6 psi) centrifugal supercharger is the most "reliable power" option on a high-km DE
+- Stock internals are generally considered safe to ~400 whp (~300 rwkW). On a 243k km engine, aim well under that.
+- **Honest warning:** DIY-tuning a MAF-based stock ECU for boost is a big jump. It needs larger injectors (K-fuel constant and latency changes), MAF rescaling or a larger housing, and boost-aware timing. Do NA first. By then we'll know the ROM well enough to judge it.
 
-## Sources
-- [MotoIQ: Project 350Z ECU tuning with UpRev](https://motoiq.com/project-350z-ecu-tuning-with-church-automotive-and-uprev)
-- [my350z: AdminTuning intake + NWP TB dyno (DE, UpRev)](https://my350z.com/forum/intake-exhaust/610139-dyno-results-admintuning-3-5-intake-and-nwp-tb-vs-stillen-intake.html)
-- [MotoIQ: Supercharging the VQ35DE with Vortech](https://motoiq.com/supercharging-the-nissan-vq35de-with-vortech)
-- [JEGS: Vortech V-3 Si kit for 2003 350Z](https://www.jegs.com/i/vortech-933-4nz218-010l-v-3-sci-trim-nissan-supercharger-kit)
-- [8020 Automotive: VQ35DE turbo guide](https://8020automotive.com/ultimate-nissan-350z-turbo-upgrade-guide/)
-- [my350z: How much power will a stock VQ35DE hold?](https://my350z.com/forum/engine-and-drivetrain/407783-how-much-power-will-a-stock-vq35de-hold-printthread.html)
-- [8020 Automotive: VQ35DE common problems](https://8020automotive.com/the-3-most-common-nissan-vq35de-engine-problems/)
-- [au7o.io: 350Z known issues](https://au7o.io/known-issues/nissan-350z)
-- [UpRev Nissan Tuning Guide](https://uprev.com/wp-content/uploads/2023/05/UpRev-Nissan-Tuning-Guide-Rev2.pdf)
+## Alongside power: reliability monitors we build
+- Oil temp / oil pressure alarms (screen flash + chime), especially oil pressure vs RPM
+- Knock-retard counter per drive, with a warning when it trends up
+- Fuel trim drift tracking (early warning of leaks, injector or O2 aging)
+- Coolant temp and IAT on track/hot QLD days
+- AFR vs target at WOT, flagged if it's ever leaner than the limit

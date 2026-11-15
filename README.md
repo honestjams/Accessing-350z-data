@@ -1,25 +1,29 @@
 # Accessing 350Z Data
 
-Read data from a 2003 Nissan 350Z (VQ35DE), build apps that talk to the car, and tune it for more power — safely.
+Read data from a 2003 Nissan 350Z (VQ35DE), build custom gauges and apps, and build our own tune from our own logs for good, reliable power.
 
 ## Docs
-1. [How the car talks](docs/01-vehicle-and-protocols.md) — K-line / KWP2000 / Consult-II, protocol bytes, what's still unknown
-2. [Hardware shopping list](docs/02-hardware-shopping-list.md) — what to buy, in what order
-3. [Improvement plan](docs/03-improvement-plan.md) — health baseline → bolt-ons + tune → forced induction
+1. [How the car talks](docs/01-vehicle-and-protocols.md): K-line / KWP2000, addresses, protocol bytes, the OBD pin quirk
+2. [Hardware shopping list](docs/02-hardware-shopping-list.md): AUD, in buy order
+3. [Improvement plan](docs/03-improvement-plan.md): health baseline → NA + DIY tune → (maybe) boost
+4. [DIY tuning workflow](docs/04-diy-tuning.md): nisprog/npkern, safety rules, milestones
+5. [Dash architecture](docs/05-dash-architecture.md): Pi hub → round ESP32 gauges, main screen, iPhone
 
 ## Roadmap
-- [ ] **Phase 0** – Buy Tier 1 hardware, scan codes, record ECU ROM ID, baseline health checks
-- [ ] **Phase 1** – Python K-line logger (fast init → ECU ID → stream params → CSV), checked against NisScan
-- [ ] **Phase 2** – Wideband integration, a live dashboard (phone or Pi), drive/track logs stored in `data/`
-- [ ] **Phase 3** – Analysis tools: pull detection, AFR vs target, knock reports, before/after mod comparisons
-- [ ] **Phase 4** – Tune (UpRev), optional CAN-bus reverse engineering
+- [ ] **Phase 0**: KKL cable + charger. Read ECU ROM ID, scan codes, photo the OBD pins, health checks
+- [ ] **Phase 1**: Python K-line logger (fast init → ECU ID → stream → CSV), checked against NisScan
+- [ ] **Phase 2**: Bench ECU: dump / practice-flash / recover with nisprog. Dump the car's stock ROM ×3
+- [ ] **Phase 3**: Pi hub + wideband + oil sensors + first round gauge + iPhone web dash
+- [ ] **Phase 4**: Map definition for our ROM, checksum tool, first safe edit (limiter)
+- [ ] **Phase 5**: Fuel/timing/VTC tuning with logs + dyno
 
-## Car profile (fill in)
+## Car profile
 | Field | Value |
 |---|---|
-| Transmission | MT / AT ? |
-| Trim | ? |
-| Mileage | ? |
+| Model | 2003 Nissan 350Z (Z33), VQ35DE |
+| Market | QLD-registered: ADM or JDM import? (check the build plate) |
+| Transmission | Manual |
+| Odometer | 243,000 km |
+| Existing mods | Aftermarket exhaust (details?), suspension, brakes |
 | ECU ROM ID | (read via `0x1A 0x81`) |
-| Existing mods | ? |
-| State (emissions) | ? |
+| Owner devices | iPhone, Mac, Windows laptop |

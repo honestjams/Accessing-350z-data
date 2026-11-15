@@ -45,9 +45,17 @@ checksum = sum of all preceding bytes & 0xFF
 
 **Throughput caveat:** RomRaider users report only ~5–6 RAM parameters per request fit in a K-line packet, so the sample rate drops as you add channels. Plan for ~10–20 Hz with a small channel set.
 
+**Addressing (confirmed by nisprog's documented Nissan settings):** `l2protocol iso14230 / initmode fast / testerid 0xfc / destaddr 0x10 / addrtype phys`
+→ ECM = `0x10`, tester = `0xFC`. Example StartCommunication after fast init: `81 10 FC 81 0E` (checksum = sum & 0xFF).
+
 **Still unknown (to discover on the car):**
-- ECM physical address / tester address for the long header (KWP2000 engine ECUs are commonly `0x10`, but **verify** — RomRaider stores it in its logger definition XML, not the source).
 - Parameter local-IDs and RAM addresses for this ROM (RPM, coolant, MAF V, timing, knock, IPW…). Sources: RomRaider logger definitions, NisScan register lists, and our own sniffing of NDS II / UpRev traffic.
+
+## OBD connector wiring quirk (check yours!)
+UpRev's "2003 G35 CAN re-wire" fix for early cars is: **move the pin in OBD connector slot 3 to slot 14.** On some early Nissans a bus line sits on a non-standard pin. This is what Australian forum posts mean by "a Brisbane shop runs another wire to the OBD2 port". Before buying anything else, look at which pins are populated in your connector (photo it). If pin 3 is populated and 14 isn't, that's the same situation. The fix is reversible.
+
+## Market / ROM
+QLD car = Australian-delivered (ADM) or a JDM Fairlady Z import. Check the build/compliance plate. ROM IDs in UpRev's table are mostly US. **Your ROM ID (read with `0x1A 0x81`) is the first thing we learn from the car.** It decides which map definitions exist.
 
 ## Other modules
 - Per NisScan: on this generation the ECM uses Consult-II on pin 7; some other modules (BCM, ABS, SRS, TCM) may use Consult-I style Tx/Rx on pins 12/13.
@@ -56,6 +64,8 @@ checksum = sum of all preceding bytes & 0xFF
 ## Sources
 - [NisScan — which NDS software / vehicle list / adaptors](https://nisscan.com/which-nds-software/)
 - [RomRaider source (NCS ISO14230 protocol)](https://github.com/RomRaider/RomRaider)
+- [nisprog USING.txt (Nissan K-line settings)](https://github.com/fenugrec/nisprog/blob/master/USING.txt)
+- [UpRev 2003 G35 CAN re-wire (PDF)](https://uprev.com/wp-content/uploads/2023/05/2003-G35-CAN-re-wire.pdf)
 - [UpRev support / supported vehicles & ROMs](https://www.uprev.com/support/)
 - [UpRev Nissan Tuning Guide (PDF)](https://uprev.com/wp-content/uploads/2023/05/UpRev-Nissan-Tuning-Guide-Rev2.pdf)
 - [pinouts.ru Nissan OBD2 table](https://pinouts.ru/CarElectronics/nissan_obd2_diag.shtml)
