@@ -8,7 +8,7 @@
 | Existing start point | **CD405 EcuFlash definition** (NisScan forum) + **nissutils** (`nisrom`, Ghidra helpers for SH7055, 92 known keysets) | See `06-research-findings.md` |
 | Finding maps in the ROM | Community definitions for the ROM ID (EcuFlash/RomRaider XML) if they exist; otherwise **nisrom** (fenugrec) + **Ghidra** (supports SuperH) | This is the real work if your ROM (ADM/JDM) has no public definition |
 | Editing | Our own table editor (Python), or EcuFlash/RomRaider with a definition | |
-| Checksums | **nissutils `nisckfix1/2`** fix the standard Nissan sum+xor checksum; `nisrom` re-checks | Must be correct before every flash | nisprog's docs say *"make ABSOLUTELY sure the checksum of the new ROM file is ok before reflashing"*. We'll write and test our own checksum verifier against the stock ROM. |
+| Checksums | **nissutils `nisckfix1/2`** fix the standard Nissan sum+xor checksum; `nisrom` re-checks | Must be correct before every flash. nisprog's docs say *"make ABSOLUTELY sure the checksum of the new ROM file is ok before reflashing"*. We'll write and test our own checksum verifier against the stock ROM. |
 
 nisprog connection settings for these ECUs: `iso14230`, fast init, tester `0xFC`, ECU `0x10`, then `setdev 7055` or `7058` (identify your chip by opening the spare ECU).
 
