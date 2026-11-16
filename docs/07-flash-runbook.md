@@ -17,7 +17,7 @@ Adapted from the RomRaider community tutorial "how to flash your Nissan ECU with
 | Windows laptop | nisprog is a Windows command-line tool |
 | **VAG-COM KKL 409.1 cable** | The tutorial uses the CH340 driver (http://www.wch.cn/download/CH341SER_EXE.html). ➕ FTDI-chip cables are generally more reliable for K-line timing. Either should work, and having a spare of each is cheap insurance. |
 | nisprog + npkern | RomRaider forum thread `viewtopic.php?f=64&t=13259` |
-| **nissandefs.xml** (Nissan ROM definitions for RomRaider) | RomRaider forum thread `viewtopic.php?f=64&t=13325`. ➕ Please fetch this one so we can check whether CD7xx is defined. |
+| **Nissan ROM definitions for RomRaider** | ✅ Use **https://github.com/Pytrex/NissanDefinitions** (maintained, 2026). Latest release `NissanDefinitions.xml`, or clone and run `Combine All.bat`. Covers CD700/CD800 (EU 2003 MT → CF170, 127 tables). See `refs/nissan-definitions-350z.md`. |
 | RomRaider + **32-bit Java** (x86) | https://www.romraider.com/index.php/RomRaider/Download. ➕ v1.1.0 (Nov 2025) checked: the installer **bundles no Nissan ROM or logger definitions**. Its release notes say Nissan **K-line logging needs a J2534 cable** (Tactrix OpenPort 2.0); ELM327 support is CAN-only. The editor works without any cable. |
 | ➕ Battery charger/supply on the car | Mandatory |
 | ➕ Spare ECU on a bench harness | Practise every step here first |

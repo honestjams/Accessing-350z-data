@@ -11,7 +11,7 @@ Read data from a 2003 Nissan 350Z (VQ35DE), build custom gauges and apps, and bu
 6. [Research findings](docs/06-research-findings.md): ECU/CPU, CD405 map definition, nissutils, param IDs, cubby fit
 7. [Flash runbook](docs/07-flash-runbook.md): ECU ID lookup → dump → edit → flash (nisprog/npkern, kernel `npk_SH7055_35`)
 
-Reference data: [refs/nissan-stock-rom-list.md](refs/nissan-stock-rom-list.md)
+Reference data: [refs/nissan-stock-rom-list.md](refs/nissan-stock-rom-list.md) · [refs/nissan-definitions-350z.md](refs/nissan-definitions-350z.md)
 
 ## Roadmap
 - [ ] **Phase 0**: KKL cable + charger. Read ECU ROM ID, scan codes, photo the OBD pins, health checks

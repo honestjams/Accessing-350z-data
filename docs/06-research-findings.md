@@ -25,6 +25,11 @@ All 2003 350Z ROMs share **FID 705513 → SH7055, 512 KiB, 350 nm flash, std+alt
 
 **Best guess for an Australian-delivered 2003 manual: CD7xx (or CD8xx)**, not CD405. The ECU label will settle it. The CD405 map definition still helps: same CPU and same compiler/codebase generation, so table *structures* are likely similar even if the addresses differ.
 
+## 1c. ✅ Full RomRaider definitions exist (Pytrex/NissanDefinitions). See `refs/nissan-definitions-350z.md`
+- **CD700 and CD800 = EU 2003 manual**, inheriting **CF170: 127 defined tables** (timing + knock windows, target AFR, fuel comp, MAF, K-value, injector latency, intake cam, throttle, rev and speed limits, DTC flags) plus checksum locations.
+- ADM power (206 kW) matches the EU car (280 PS), not the US (287 hp). That supports an ADM ROM being **CD700/CD800-family**. 🟡 until the VIN lookup confirms it.
+- CD405 (JDM MT) inherits CD415 (105 tables). It confirms NisScan's MAF table at 0x913E.
+
 ## 2. Map definition already started for CD405 (EcuFlash, by NisScan's Tom)
 Download: `https://nisscan.com/phpBB3/download/file.php?id=46` (`2WLGHD10.xml`, goes in EcuFlash `rommetadata`). 72 table entries (values + axes). Main tables:
 
