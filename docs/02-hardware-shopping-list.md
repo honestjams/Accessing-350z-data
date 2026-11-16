@@ -35,8 +35,9 @@ See `05-dash-architecture.md` for how these fit together.
 | **Automotive Pi power supply with ignition sense + safe shutdown** | Survives cranking dips. Shuts the Pi down cleanly at key-off so the SD card doesn't get corrupted. | $60–120 |
 | **CAN HAT** (Waveshare 2-CH CAN HAT or PiCAN) | Reads the AEM wideband over CAN and runs a private gauge bus. Can later sniff the car's internal bus. | $40–90 |
 | ADC board (ADS1115) | Reads the oil pressure/temp senders | $15 |
-| **Round gauge screens: Waveshare ESP32-S3-Touch-LCD-2.1** (480×480) | Fully programmable digital gauges. Fit 3 into an aftermarket triple pod or A-pillar pod (measure the bezel; 60 mm pods suit 2.1" screens best). | $55–75 ea |
-| **Main screen**: 7"–8.8" high-brightness IPS (≥800 nit) | A full dashboard and log view. QLD sun washes out cheap panels. | $100–250 |
+| **7" screen in the centre cubby** (DSI or HDMI, IPS, touch, ≤ ~182 × 117 × 35 mm module) | The main display. On a 2003 the cubby pocket unscrews and a 7" fits without cutting. Software-drawn gauges mean any layout and multiple pages. **Measure your cubby before buying.** Candidates: Raspberry Pi Touch Display 2 (7", DSI, check its width — it's close), or a Waveshare 7" 1024×600 IPS HDMI/DSI touch panel. | $90–180 |
+| Mounting: 3D-printed bezel/bracket to replace the cubby pocket | A clean factory look. We can design it in OpenSCAD once you send measurements. | $10–60 |
+| *(Optional, later)* 2× round ESP32-S3 2.1" gauges | For a second location (A-pillar/steering-column pod). Only two 52 mm-class gauges fit the cubby side by side, so the 7" is the better use of that space. | $55–75 ea |
 | 10 Hz GPS (USB) | Lap timing, plus a road-based "virtual dyno" from speed and acceleration | $30–50 |
 | Industrial microSD or a USB SSD | Survives heat and power cuts better | $30–60 |
 
@@ -46,4 +47,4 @@ See `05-dash-architecture.md` for how these fit together.
 1. **Now:** 2× KKL cable + battery charger + NDS II. Read the ROM ID, scan codes, log the stock car with NDS II. Photograph the OBD connector pins.
 2. **Then:** spare ECU + bench setup → practise dump/flash with nisprog.
 3. **Then:** wideband + oil sensors → real baseline logs.
-4. **In parallel:** Pi hub + one round screen → first working gauge, then expand.
+4. **In parallel:** measure the cubby → Pi hub + 7" screen → first working dash page.

@@ -24,7 +24,7 @@ A tune exposes weaknesses. A tired engine on a good tune is still a tired engine
 ## Stage 1 — Naturally aspirated + DIY tune (target ~195–205 rwkW / ~265–275 whp)
 Order of work:
 1. **Learn the stock tune from logs first.** Map where the ECU runs closed loop vs open loop, how far knock retard pulls timing, and what the AFR does at WOT. The stock DE runs very rich at WOT, so there is safe power in fuel and timing.
-2. Mechanical: confirm what the exhaust is (cat-back only, or Y-pipe/cats too?). If you're not worried about rules, a **Y-pipe + high-flow cats** is the best NA mechanical gain on a VQ. Headers come next. An intake adds a little.
+2. Mechanical: the car has a **cat-back only**, so the stock headers, Y-pipe and cats are still in place. That's where the remaining exhaust gains are. **Y-pipe + high-flow cats** is the best NA mechanical gain on a VQ; headers come next, and an intake adds a little. **Tip:** have the wideband bung welded into the new Y-pipe/cat pipe in the same exhaust-shop visit. Log the stock car *before* the exhaust work, so we can measure what it actually gained.
 3. Tune, in small logged steps:
    - **WOT fuel targets**: lean the rich stock WOT mixture toward a safe ~12.5–12.8:1 AFR
    - **Ignition timing**: add advance gradually on 98 RON, watching knock retard. Back off at the first sign of knock.
