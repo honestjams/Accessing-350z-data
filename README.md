@@ -9,6 +9,9 @@ Read data from a 2003 Nissan 350Z (VQ35DE), build custom gauges and apps, and bu
 4. [DIY tuning workflow](docs/04-diy-tuning.md): nisprog/npkern, safety rules, milestones
 5. [Dash architecture](docs/05-dash-architecture.md): Pi hub → 7" centre-cubby screen + iPhone, screen pages
 6. [Research findings](docs/06-research-findings.md): ECU/CPU, CD405 map definition, nissutils, param IDs, cubby fit
+7. [Flash runbook](docs/07-flash-runbook.md): ECU ID lookup → dump → edit → flash (nisprog/npkern, kernel `npk_SH7055_35`)
+
+Reference data: [refs/nissan-stock-rom-list.md](refs/nissan-stock-rom-list.md)
 
 ## Roadmap
 - [ ] **Phase 0**: KKL cable + charger. Read ECU ROM ID, scan codes, photo the OBD pins, health checks

@@ -13,6 +13,8 @@ Prices are **rough AUD estimates** (late 2026). Check local suppliers: Core Elec
 | Bench harness / 12 V bench supply + OBD pigtail | To power the spare ECU on the desk and talk K-line to it | $40–80 |
 | **Factory Service Manual** (2003 Z33) | Pinouts, ECM connector, sensor specs | free (NICOclub) |
 
+Optional: **Tactrix OpenPort 2.0** (J2534, ~$250 genuine). Needed **only** for RomRaider's built-in Nissan K-line logger (confirmed in the RomRaider 1.1.0 release notes; its ELM327 support is CAN-only). Our own logger, NisScan and nisprog all use the KKL cable, so this can wait.
+
 Optional: **OBDLink MX+** (~$180). It works with iPhone via Bluetooth and is nice for quick checks with off-the-shelf apps. It **can't** flash, and our hub will own the K-line connection anyway, so it's a convenience, not a requirement.
 
 ## Tier 2 — Tuning sensors (~$450–900)
