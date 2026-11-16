@@ -21,7 +21,7 @@ Optional: **OBDLink MX+** (~$180). It works with iPhone via Bluetooth and is nic
 |---|---|---|
 | **Wideband O2: AEM X-Series UEGO (with CAN + 0–5 V out)** or Innovate MTX-L Plus (serial out) | No factory wideband on this car, and you can't tune fuel without one. The AEM's CAN output plugs straight into our hub. | $350–450 |
 | Wideband bung welded (pre-cat, or in the Y-pipe) | Any exhaust shop | $50–100 |
-| **Oil pressure sender** (0–150 psi, 0.5–4.5 V) + **oil temp sender** (NTC) + **oil filter sandwich plate** | Reliability monitoring at 243k km. The factory oil pressure gauge is a crude sender. | $150–250 |
+| **Oil pressure sender** (0–150 psi, 0.5–4.5 V) + **oil temp sender** (NTC) + **oil filter sandwich plate** (M20×1.5 stud, 1/8" NPT ports; factory pressure switch is 1/8 BSPT) | Reliability monitoring at 243k km. The factory oil pressure gauge is a crude sender. | $150–250 |
 | Knock monitoring (optional): Plex Knock Monitor or det-cans | An independent check on detonation while learning to tune | $100–800 |
 | **Dyno time** (Brisbane/Gold Coast, 2–3 hrs) | DIY doesn't mean tuning WOT on public roads. Hire load-bearing dyno time once part-throttle logs are clean. | $150–250/hr |
 
@@ -35,7 +35,7 @@ See `05-dash-architecture.md` for how these fit together.
 | **Automotive Pi power supply with ignition sense + safe shutdown** | Survives cranking dips. Shuts the Pi down cleanly at key-off so the SD card doesn't get corrupted. | $60–120 |
 | **CAN HAT** (Waveshare 2-CH CAN HAT or PiCAN) | Reads the AEM wideband over CAN and runs a private gauge bus. Can later sniff the car's internal bus. | $40–90 |
 | ADC board (ADS1115) | Reads the oil pressure/temp senders | $15 |
-| **7" screen in the centre cubby** (DSI or HDMI, IPS, touch, ≤ ~182 × 117 × 35 mm module) | The main display. On a 2003 the cubby pocket unscrews and a 7" fits without cutting. Software-drawn gauges mean any layout and multiple pages. **Measure your cubby before buying.** Candidates: Raspberry Pi Touch Display 2 (7", DSI, check its width — it's close), or a Waveshare 7" 1024×600 IPS HDMI/DSI touch panel. | $90–180 |
+| **7" screen in the centre cubby** (DSI or HDMI, IPS, touch, ≤ ~182 × 117 × 35 mm module) | The main display. On a 2003 the cubby pocket unscrews and a 7" fits without cutting. Software-drawn gauges mean any layout and multiple pages. **Measure your cubby before buying.** Choose a panel ≤ ~182 × 117 mm (known to fit a 2003). ⚠️ The Raspberry Pi Touch Display 2 is 189.5 × 120 mm, so it probably needs trimming. A Waveshare-style 7" 1024×600 IPS panel or a bare 6.5"–7" panel with a printed bezel is safer. | $90–180 |
 | Mounting: 3D-printed bezel/bracket to replace the cubby pocket | A clean factory look. We can design it in OpenSCAD once you send measurements. | $10–60 |
 | *(Optional, later)* 2× round ESP32-S3 2.1" gauges | For a second location (A-pillar/steering-column pod). Only two 52 mm-class gauges fit the cubby side by side, so the 7" is the better use of that space. | $55–75 ea |
 | 10 Hz GPS (USB) | Lap timing, plus a road-based "virtual dyno" from speed and acceleration | $30–50 |

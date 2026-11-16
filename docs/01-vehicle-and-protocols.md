@@ -57,6 +57,11 @@ UpRev's "2003 G35 CAN re-wire" fix for early cars is: **move the pin in OBD conn
 ## Market / ROM
 QLD car = Australian-delivered (ADM) or a JDM Fairlady Z import. Check the build/compliance plate. ROM IDs in UpRev's table are mostly US. **Your ROM ID (read with `0x1A 0x81`) is the first thing we learn from the car.** It decides which map definitions exist.
 
+## ECU location & CPU
+- RHD/ADM: **behind the passenger airbag** (Haltech). The label shows 23710-xxxxx and an MEC number.
+- Likely **SH7055, 512 KiB ROM** (the CD405 350Z ROM is 512 KiB). Confirm when dumping.
+- Live-data parameter ID candidates: see `06-research-findings.md` §4.
+
 ## Other modules
 - Per NisScan: on this generation the ECM uses Consult-II on pin 7; some other modules (BCM, ABS, SRS, TCM) may use Consult-I style Tx/Rx on pins 12/13.
 - Internal CAN (500 kbps, 11-bit IDs) carries broadcast data (wheel speed, RPM, coolant, etc.). Sniffing it requires tapping CAN-H/CAN-L at the combo meter or ECM harness if the OBD port doesn't expose pins 6/14. No reliable public ID list for the 2003 exists, so this is a reverse-engineering task.

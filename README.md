@@ -8,6 +8,7 @@ Read data from a 2003 Nissan 350Z (VQ35DE), build custom gauges and apps, and bu
 3. [Improvement plan](docs/03-improvement-plan.md): health baseline → NA + DIY tune → (maybe) boost
 4. [DIY tuning workflow](docs/04-diy-tuning.md): nisprog/npkern, safety rules, milestones
 5. [Dash architecture](docs/05-dash-architecture.md): Pi hub → 7" centre-cubby screen + iPhone, screen pages
+6. [Research findings](docs/06-research-findings.md): ECU/CPU, CD405 map definition, nissutils, param IDs, cubby fit
 
 ## Roadmap
 - [ ] **Phase 0**: KKL cable + charger. Read ECU ROM ID, scan codes, photo the OBD pins, health checks
