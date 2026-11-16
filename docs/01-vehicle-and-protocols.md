@@ -59,7 +59,8 @@ QLD car = Australian-delivered (ADM) or a JDM Fairlady Z import. Check the build
 
 ## ECU location & CPU
 - RHD/ADM: **behind the passenger airbag** (Haltech). The label shows 23710-xxxxx and an MEC number.
-- Likely **SH7055, 512 KiB ROM** (the CD405 350Z ROM is 512 KiB). Confirm when dumping.
+- ✅ **SH7055, 512 KiB ROM, 350 nm flash** for every 2003 350Z ROM (FID 705513). nisprog: `setdev 7055` with the 350 nm npkern kernel. Checksums: std + alt.
+- Likely ROM family for an ADM car: **CD7xx/CD8xx** (HWID `4TTZVEM4…`). See `refs/nissan-stock-rom-list.md`.
 - Live-data parameter ID candidates: see `06-research-findings.md` §4.
 
 ## Other modules

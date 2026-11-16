@@ -13,6 +13,18 @@ Confidence: ✅ confirmed from a primary source · 🟡 strong lead, verify on t
 
 **Action:** pull the passenger airbag/glovebox trim, photograph the ECU label (23710-xxxxx + MEC number), and we'll know whether we're on CD405 or something else.
 
+## 1b. ROM families from the RomRaider stock ROM list (see `refs/nissan-stock-rom-list.md`)
+All 2003 350Z ROMs share **FID 705513 → SH7055, 512 KiB, 350 nm flash, std+alt checksums** ✅. They split by hardware ID (HWID):
+
+| HWID family | ROM IDs | Market (as listed / inferred) |
+|---|---|---|
+| `3GILXN05` | CD002, CD007 (and US CD000–CD003) | ✅ USDM |
+| `2WLGHD10` | CD405 (MT), CD415 (AT) | ✅ JDM (CD415 is "JDM AT") |
+| `2WLM1D13` | CD416 | JDM, non-OBD-II |
+| `4TTZVEM4xNx` | **CD700** (2003), CE860 (2004 AT) | 🟡 **probably export (Europe/Australia)**, since it's neither the US nor the JDM family. UpRev's 2003 MT list also has CD700 and CD800. |
+
+**Best guess for an Australian-delivered 2003 manual: CD7xx (or CD8xx)**, not CD405. The ECU label will settle it. The CD405 map definition still helps: same CPU and same compiler/codebase generation, so table *structures* are likely similar even if the addresses differ.
+
 ## 2. Map definition already started for CD405 (EcuFlash, by NisScan's Tom)
 Download: `https://nisscan.com/phpBB3/download/file.php?id=46` (`2WLGHD10.xml`, goes in EcuFlash `rommetadata`). 72 table entries (values + axes). Main tables:
 
