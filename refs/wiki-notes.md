@@ -57,8 +57,12 @@ SH7058, 1 MiB, FID `6GI5VN6`, LOADER60. ➕ Ours is SH7055 / 512 KiB / FID 70551
 
 ➕ **Our 2003 350Z (FID 705513, "loader 10")** shares its FID with **EQ910 = type B**. So expect a **type-B board**, with signals equivalent to type A's (WDT likely 250 Hz on PL5). Confirm with continuity checks on the spare ECU before any boot-mode wiring. Outside markings to record: the MEC number on the label (CF43D = "MEC60-122").
 
+## 5b. EEPROM (Eeprom_dumps page)
+External serial EEPROM on the PCB, separate from the 512 KiB flash ROM: **93C66 (4 kbit = 256 × 16-bit)** on CF43D, 6Z68A, 7Y210, ZD89A (EC87A uses an M95320, 32 kbit). Example dumps are linked from the wiki (RomRaider attachments).
+➕ The EEPROM likely holds per-vehicle data (NATS/immobiliser registration, learned values, possibly VIN), so treat it as **part of the backup**. nisprog reads it with `dumpmem <file> <start> <len> eep`, which needs the **kernel running** and the `eeprom_read()` address set (`npconf`; `nisrom` finds it automatically for many ROMs, e.g. CF43D `0x4EAF4`). We never write it.
+
 ## 6. Tools (Tools page)
 freediag/nisprog (compiled builds: RomRaider `viewtopic.php?f=45&t=13259`) · IDA (+ fenugrec's `sh3.cfg` with Nissan secondary-IVT defs) · **Ghidra** (free) · Notepad++ (XML defs) · **WinOLS demo** (map hunting) · Renesas HEW (simulator, core only, no SCI/ATU/CAN) · **Renesas FDT** (boot-mode flashing).
 
 ## 7. Wiki pages still worth copying (same "Edit → copy" method)
-[SID22](https://nissanecu.miraheze.org/wiki/SID22) (CID meanings) ⭐ · [C2_14230](https://nissanecu.miraheze.org/wiki/C2_14230) (Consult-II protocol) ⭐ · [Wdt](https://nissanecu.miraheze.org/wiki/Wdt) · [Checksums](https://nissanecu.miraheze.org/wiki/Checksums) · [Eeprom_code](https://nissanecu.miraheze.org/wiki/Eeprom_code)
+[SID22](https://nissanecu.miraheze.org/wiki/SID22) (CID meanings) ⭐ · [C2_14230](https://nissanecu.miraheze.org/wiki/C2_14230) (Consult-II protocol) ⭐ · [Wdt](https://nissanecu.miraheze.org/wiki/Wdt) · ~~Eeprom_dumps~~ ✅ · [Checksums](https://nissanecu.miraheze.org/wiki/Checksums) · [Eeprom_code](https://nissanecu.miraheze.org/wiki/Eeprom_code)

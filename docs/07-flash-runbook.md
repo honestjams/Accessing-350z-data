@@ -46,6 +46,7 @@ Adapted from the RomRaider community tutorial "how to flash your Nissan ECU with
 5. `dumpmem my_rom.bin 0 524288` (512 KiB for SH7055).
 6. **Not done yet:** `stopkernel` (fans stop) → `npdisc` → `quit` → ignition off → unplug.
 7. ➕ Repeat the dump **three times** (`stock_1.bin`, `stock_2.bin`, `stock_3.bin`). All three SHA-256 hashes must match. Commit them to `roms/stock/` with the ECUID and date.
+8. ➕ **Also back up the EEPROM** (93C66, 512 bytes) once the kernel is proven on the bench: find `eeprom_read()` with `nisrom`, set it with `npconf`, then `dumpmem eeprom.bin 0 512 eep`. It holds per-car data (likely NATS), and we never write it.
 
 ## 4. Edit
 1. RomRaider: run `run.bat` → Definitions Manager → **Add** `nissandefs.xml`.
