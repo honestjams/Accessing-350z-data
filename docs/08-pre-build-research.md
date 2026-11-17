@@ -46,8 +46,8 @@ Full table reference (81 tables, with addresses, scaling, axes, original Nissan 
 - RomRaider's Nissan logger names parameters `P2` coolant, `P11` IAT, `P17` battery V, `P4389`/`P4390` learned fuel trim B1/B2, `E173`/`E174` mixture-learning trim/count. The **byte IDs live in RomRaider's logger XML** (forum `viewtopic.php?f=8&t=1642`), which we still need.
 - **Plan B needs no IDs:** the `AC 81 83 <addr>` form reads any RAM address. Once we have the ROM, disassembling it (Ghidra + nissutils helpers) finds where RPM, load, timing, knock retard etc. live in RAM. That's more work but fully under our control.
 
-## 4b. CAN broadcast at the OBD port ✅ (FSM EC-30)
-The OBD data link connector is a CAN node on every 2003 350Z. The ECM broadcasts engine speed, coolant, accelerator position and fuel consumption, and other units broadcast vehicle speed, fuel level, lamps and doors. **The dash should read these passively over CAN** (fast, zero ECM load) and use K-line polling only for what CAN doesn't carry (timing, MAF, injector PW, trims, cam angle, knock via RAM). That needs a CAN interface on the hub (already in the Tier 3 list) and an ID-sniffing session.
+## 4b. CAN broadcast data 🟡 (FSM EC-30, corrected by EC-631/632)
+The EC-30 table lists the OBD connector as a CAN unit, **but the EC-631/632 wiring diagrams show no CAN wires to OBD pins 6/14**, so check the connector. The reliable tap is **meter/A/C amp connector M48 pin 1 (CAN-H) / pin 11 (CAN-L)** behind the centre stack. The ECM broadcasts engine speed, coolant, accelerator position and fuel consumption, and other units broadcast vehicle speed, fuel level, lamps and doors. **The dash should read these passively over CAN** (fast, zero ECM load) and use K-line polling only for what CAN doesn't carry (timing, MAF, injector PW, trims, cam angle, knock via RAM). That needs a CAN interface on the hub (already in the Tier 3 list) and an ID-sniffing session.
 
 ## 5. Tool architecture decision
 | Job | Approach | Why |
