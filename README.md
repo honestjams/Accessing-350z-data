@@ -12,7 +12,7 @@ Read data from a 2003 Nissan 350Z (VQ35DE), build custom gauges and apps, and bu
 7. [Flash runbook](docs/07-flash-runbook.md): ECU ID lookup → dump → edit → flash (nisprog/npkern, kernel `npk_SH7055_35`)
 8. [Pre-build research](docs/08-pre-build-research.md): byte-level K-line protocol, risk-free read-only ROM dump, ignition/knock model, tool architecture
 
-Reference data: [refs/nissan-stock-rom-list.md](refs/nissan-stock-rom-list.md) · [refs/nissan-definitions-350z.md](refs/nissan-definitions-350z.md) · [refs/cf170-tables.md](refs/cf170-tables.md) · [refs/fsm-ec-2003-350z.md](refs/fsm-ec-2003-350z.md) · [refs/wiki-bootmode.md](refs/wiki-bootmode.md)
+Reference data: [refs/nissan-stock-rom-list.md](refs/nissan-stock-rom-list.md) · [refs/nissan-definitions-350z.md](refs/nissan-definitions-350z.md) · [refs/cf170-tables.md](refs/cf170-tables.md) · [refs/fsm-ec-2003-350z.md](refs/fsm-ec-2003-350z.md) · [refs/wiki-bootmode.md](refs/wiki-bootmode.md) · [refs/wiki-notes.md](refs/wiki-notes.md)
 
 ## Roadmap
 - [ ] **Phase 0**: KKL cable + charger. Read ECU ROM ID, scan codes, photo the OBD pins, health checks
