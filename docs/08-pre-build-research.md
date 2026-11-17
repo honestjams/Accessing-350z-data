@@ -59,7 +59,7 @@ UpRev sells "Bench-Top harness" variants (Gen1, Gen3, HR & VHR, Juke) at $175 US
 ## 7. Still open (owner can fetch in a browser)
 | Item | Where | Why |
 |---|---|---|
-| RomRaider **logger definition** (zip/XML) | romraider.com forum `viewtopic.php?f=8&t=1642` | Parameter byte IDs + scalings for the logger |
+| RomRaider **logger definition**: `logger_v370.zip` (+ `logger.dtd`) | romraider.com forum `viewtopic.php?f=8&t=1642` (attachment; may need a free login) | Parameter byte IDs + scalings. Nissan K-line params were added in **v350**, Nissan CAN in **v370**. We want `logger_METRIC_EN_v370.xml`. |
 | **2003 350Z FSM — EC section** (+ EM, LAN) | NICOclub free manuals: https://www.nicoclub.com/nissan-service-manuals | ECM pinout, CONSULT-II data-monitor reference values (healthy idle MAF V, injector PW, timing) |
 | Nissan ECU wiki pages | https://nissanecu.miraheze.org/wiki/Main_Page (save as PDF: Main Page, Checksums, Firmware_re, Nissan_Tuning, Rom_an_cf48d) | Deeper RE notes |
 | ECU ID | EPC VIN lookup | Confirms CD700/CD800 |
