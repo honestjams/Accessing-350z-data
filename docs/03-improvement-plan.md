@@ -19,6 +19,8 @@ A tune exposes weaknesses. A tired engine on a good tune is still a tired engine
 | **Crank/cam sensors**, PCV, plenum gaskets, thermostat | Known Z33 items |
 | Clutch, engine/gearbox mounts | Extra torque finds weak mounts and slipping clutches |
 
+**Factory pass/fail numbers** (from the FSM, see `refs/fsm-ec-2003-350z.md`): warm idle MAF 1.1–1.5 V / 2–6 g/s · base fuel schedule 2.5–3.5 ms · injector pulse 2.0–3.0 ms · timing 13–18° BTDC at idle · A/F alpha 54–155 % at 2,000 rpm · fuel pressure ≈ 350 kPa · idle 650 ± 50 rpm.
+
 **Our first software deliverable helps here directly:** logging fuel trims (LTFT/STFT) per bank at idle, cruise and load shows vacuum leaks, injector or O2 problems before we touch the tune.
 
 ## Stage 1 — Naturally aspirated + DIY tune (target ~195–205 rwkW / ~265–275 whp)

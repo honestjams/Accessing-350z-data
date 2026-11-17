@@ -46,6 +46,9 @@ Full table reference (81 tables, with addresses, scaling, axes, original Nissan 
 - RomRaider's Nissan logger names parameters `P2` coolant, `P11` IAT, `P17` battery V, `P4389`/`P4390` learned fuel trim B1/B2, `E173`/`E174` mixture-learning trim/count. The **byte IDs live in RomRaider's logger XML** (forum `viewtopic.php?f=8&t=1642`), which we still need.
 - **Plan B needs no IDs:** the `AC 81 83 <addr>` form reads any RAM address. Once we have the ROM, disassembling it (Ghidra + nissutils helpers) finds where RPM, load, timing, knock retard etc. live in RAM. That's more work but fully under our control.
 
+## 4b. CAN broadcast at the OBD port ✅ (FSM EC-30)
+The OBD data link connector is a CAN node on every 2003 350Z. The ECM broadcasts engine speed, coolant, accelerator position and fuel consumption, and other units broadcast vehicle speed, fuel level, lamps and doors. **The dash should read these passively over CAN** (fast, zero ECM load) and use K-line polling only for what CAN doesn't carry (timing, MAF, injector PW, trims, cam angle, knock via RAM). That needs a CAN interface on the hub (already in the Tier 3 list) and an ID-sniffing session.
+
 ## 5. Tool architecture decision
 | Job | Approach | Why |
 |---|---|---|
@@ -60,7 +63,7 @@ UpRev sells "Bench-Top harness" variants (Gen1, Gen3, HR & VHR, Juke) at $175 US
 | Item | Where | Why |
 |---|---|---|
 | RomRaider **logger definition**: `logger_v370.zip` (+ `logger.dtd`) | romraider.com forum `viewtopic.php?f=8&t=1642` (attachment; may need a free login) | Parameter byte IDs + scalings. Nissan K-line params were added in **v350**, Nissan CAN in **v370**. We want `logger_METRIC_EN_v370.xml`. |
-| **2003 350Z FSM — EC section** (+ EM, LAN) | NICOclub free manuals: https://www.nicoclub.com/nissan-service-manuals | ECM pinout, CONSULT-II data-monitor reference values (healthy idle MAF V, injector PW, timing) |
+| ~~2003 350Z FSM, EC section~~ ✅ received (EC-1…198); see `refs/fsm-ec-2003-350z.md`. Optional: last part with SDS (≈EC-650) | — | — |
 | Nissan ECU wiki (CC BY-SA; behind a bot check, so copy pages by hand) | **1. [Bootmode](https://nissanecu.miraheze.org/wiki/Bootmode)**: "shbootmode" unbricking, our safety net if a flash fails · **2. [Rom_an_cf43d](https://nissanecu.miraheze.org/wiki/Rom_an_cf43d)**: '06 350Z VQ35DE ROM analysis (RAM variables, structures) · **3. [Connect](https://nissanecu.miraheze.org/wiki/Connect)** · **4. [Ecu_hw](https://nissanecu.miraheze.org/wiki/Ecu_hw)**: hardware versions, bench pinouts · **5. [Firmware_re](https://nissanecu.miraheze.org/wiki/Firmware_re)**: checksums, keys, algorithms · 6. [Tools](https://nissanecu.miraheze.org/wiki/Tools) · 7. [Eeprom_dumps](https://nissanecu.miraheze.org/wiki/Eeprom_dumps) | Recovery plan, RAM addresses for logging, bench wiring |
 | RomRaider unbricking tutorial | `viewtopic.php?f=7&t=12821` ("Nissan ECU unbricking tutorial with shbootmode") | Step-by-step recovery |
 | ECU ID | EPC VIN lookup | Confirms CD700/CD800 |
