@@ -10,6 +10,7 @@ Prices are **rough AUD estimates** (late 2026). Check local suppliers: Core Elec
 | **Battery charger / power supply, 10 A+** (CTEK MXS 10 or similar) | Mandatory for ROM dumps and flashing. nisprog: *"If the battery dies at the wrong moment, you'll have to unbrick the ECU!"* | $150–200 |
 | **NisScan NDS II (Windows)** | NisScan is an Australian company. It's a known-good Consult-II tool: DTCs, live data, idle air volume learn, self-learn reset. We use it as the reference to check our own code against. | ~$48 |
 | **Spare 350Z ECU** (wrecker/eBay, same part-number prefix as yours) | A bench "practice" ECU. Dump and flash this one first, so mistakes never strand the car. | $80–200 |
+| **Boot-mode recovery kit**: 5 V USB-TTL (FTDI) adapter, Arduino Nano/ESP32 (WDT pulses), 8-ch logic analyser, 22 Ω resistors, fine wire, flux, Kapton | Unbricks an ECU after a failed flash (see `refs/wiki-bootmode.md`). Rehearse on the spare ECU. | $60–120 |
 | Bench harness / 12 V bench supply + OBD pigtail | To power the spare ECU on the desk and talk K-line to it | $40–80 |
 | **Factory Service Manual** (2003 Z33) | Pinouts, ECM connector, sensor specs | free (NICOclub) |
 

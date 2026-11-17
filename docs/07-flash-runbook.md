@@ -66,4 +66,6 @@ Adapted from the RomRaider community tutorial "how to flash your Nissan ECU with
 5. ➕ **Re-learn (required by the FSM after any ECM disconnect; `stopkernel` also resets learned values):** accelerator pedal released position → throttle valve closed position → **idle air volume learning**. Key-and-pedal sequence in `refs/fsm-ec-2003-350z.md` §5, or NisScan NDS II Work Support.
 6. Start the car. Confirm **650 ± 50 rpm idle and 15 ± 5° BTDC**, then log a gentle drive before anything spirited.
 
+➕ **If it bricks:** SH boot mode can recover the ECU, but it needs the case opened, test-point wiring and a WDT pulse generator, and **entering boot mode erases the ROM**, so a verified backup is mandatory. See `refs/wiki-bootmode.md`. Rehearse it on the spare ECU before the first real flash of the car's ECU.
+
 ➕ Do everything in this runbook on the **bench ECU** first, including a deliberately interrupted flash and its recovery, before touching the car.
